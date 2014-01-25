@@ -3,7 +3,7 @@
             [zookeeper :as zk]
             [zookeeper.data :as zk-data]
             [zookeeper.util :as zk-util]
-            [cheshire.core :refer [parse-string generate-string]])))
+            [cheshire.core :refer [parse-string generate-string]]))
 
 (def ^{:dynamic true} *client*)
 
