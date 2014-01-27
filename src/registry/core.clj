@@ -129,8 +129,12 @@
     (when (nil? (zk/exists client prefix))
       (zk/create client prefix :persistent? true))))
 
-(defn connect!
-  [& args]
-  (alter-var-root (var *client*) (constantly (InMemoryRegistry. (atom {})))))
+(defmulti start :type)
 
-;; (ZooKeeperRegistry. (zk/connect (str host ":" port)))
+(defmethod start :in-memory
+  [& args]
+  (InMemoryRegistry. (atom {})))
+
+(defmethod start :zk
+  [host port]
+  (ZooKeeperRegistry. (zk/connect (str host ":" port))))
