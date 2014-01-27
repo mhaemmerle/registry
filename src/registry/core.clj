@@ -5,8 +5,6 @@
             [zookeeper.util :as zk-util]
             [cheshire.core :refer [parse-string generate-string]]))
 
-(def ^{:dynamic true} *client*)
-
 (def ^{:dynamic true} *serialize* #(generate-string %))
 (def ^{:dynamic true} *deserialize* #(parse-string % true))
 
